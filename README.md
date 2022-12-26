@@ -1,5 +1,5 @@
-# Minimal C++ Starter
+# Volume C++
 
-[![build status](https://img.shields.io/github/actions/workflow/status/threeal/minimal-cpp-starter/build.yml?branch=main)](https://github.com/threeal/minimal-cpp-starter/actions/workflows/build.yml)
+[![build status](https://img.shields.io/github/actions/workflow/status/threeal/volume-cpp/build.yml?branch=main)](https://github.com/threeal/volume-cpp/actions/workflows/build.yml)
 
-A minimal C++ template to kickstart your project.
+A cross-platform audio volume control library in C++.
