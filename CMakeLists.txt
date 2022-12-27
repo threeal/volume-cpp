@@ -10,7 +10,7 @@ else()
 endif()
 
 include(cmake/CPM.cmake)
-
+cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 cpmaddpackage(
   NAME result
   GITHUB_REPOSITORY threeal/result
