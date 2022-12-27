@@ -17,7 +17,11 @@ cpmaddpackage(
   GIT_TAG 7acc062
   OPTIONS "BUILD_TESTING OFF")
 
-add_library(volume src/device.cpp)
+if(WIN32)
+  set(WINDOWS_SRCS src/device_windows.cpp)
+endif()
+
+add_library(volume src/device.cpp ${WINDOWS_SRCS})
 target_include_directories(volume PUBLIC include)
 target_link_libraries(volume PUBLIC result)
 

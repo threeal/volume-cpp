@@ -2,12 +2,8 @@
 
 namespace vol {
 
-#ifndef _WIN32
-
 res::ResultOr<Devices> list_devices() {
-  return res::Err("unimplemented");
+  return Devices{};
 }
-
-#endif
 
 }  // namespace vol
