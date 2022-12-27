@@ -3,5 +3,5 @@
 
 TEST_CASE("list devices") {
   const auto res = vol::list_devices();
-  REQUIRE(res.is_ok());
+  if (res.is_err()) FAIL(res.unwrap_err());
 }

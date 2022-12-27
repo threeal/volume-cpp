@@ -18,13 +18,17 @@ cpmaddpackage(
   OPTIONS "BUILD_TESTING OFF")
 
 if(WIN32)
-  add_subdirectory(utils/windows)
   set(WINDOWS_SRCS src/device_windows.cpp)
 endif()
 
 add_library(volume src/device.cpp ${WINDOWS_SRCS})
 target_include_directories(volume PUBLIC include)
 target_link_libraries(volume PUBLIC result)
+
+if(WIN32)
+  add_subdirectory(utils/windows)
+  target_link_libraries(volume PUBLIC volume_utils_windows)
+endif()
 
 if(BUILD_TESTING)
   enable_testing()
