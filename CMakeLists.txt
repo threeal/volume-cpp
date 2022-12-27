@@ -18,6 +18,7 @@ cpmaddpackage(
   OPTIONS "BUILD_TESTING OFF")
 
 if(WIN32)
+  add_subdirectory(utils/windows)
   set(WINDOWS_SRCS src/device_windows.cpp)
 endif()
 
