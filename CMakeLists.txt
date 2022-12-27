@@ -10,6 +10,12 @@ endif()
 
 include(cmake/CPM.cmake)
 
+cpmaddpackage(
+  NAME result
+  GITHUB_REPOSITORY threeal/result
+  GIT_TAG 7acc062
+  OPTIONS "BUILD_TESTING OFF")
+
 add_library(volume src/device.cpp)
 target_include_directories(volume PUBLIC include)
 
