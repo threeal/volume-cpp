@@ -7,7 +7,8 @@ res::ResultOr<Devices> list_devices() {
   auto com = utils::com_init();
   if (!com.is_ok()) return res::Err("failed to initialize COM");
   auto enumerator = com.create_device_enumerator();
-  if (!enumerator.is_ok()) return res::Err("failed to create a device enumerator");
+  if (!enumerator.is_ok())
+    return res::Err("failed to create a device enumerator");
   return Devices{};
 }
 

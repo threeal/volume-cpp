@@ -1,7 +1,6 @@
 #pragma once
 
 #include <result/result_or.hpp>
-
 #include <string>
 #include <vector>
 
