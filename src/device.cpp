@@ -2,6 +2,6 @@
 
 namespace vol {
 
-std::vector<Device> list_devices() { return {}; }
+res::ResultOr<Devices> list_devices() { return Devices{}; }
 
 }  // namespace vol

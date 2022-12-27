@@ -2,5 +2,6 @@
 #include <volume/device.hpp>
 
 TEST_CASE("list devices") {
-  const auto devices = vol::list_devices();  //
+  const auto res = vol::list_devices();
+  REQUIRE(res.is_ok());
 }

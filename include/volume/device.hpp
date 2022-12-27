@@ -1,5 +1,7 @@
 #pragma once
 
+#include <result/result_or.hpp>
+
 #include <string>
 #include <vector>
 
@@ -7,6 +9,8 @@ namespace vol {
 
 struct Device {};
 
-std::vector<Device> list_devices();
+using Devices = std::vector<Device>;
+
+res::ResultOr<Devices> list_devices();
 
 }  // namespace vol
