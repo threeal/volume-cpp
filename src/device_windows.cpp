@@ -1,10 +1,12 @@
 #include <volume/device.hpp>
-#include <volume/utils/device_enumerator.hpp>
+#include <volume/utils/com.hpp>
 
 namespace vol {
 
 res::ResultOr<Devices> list_devices() {
-  const auto enumerator = utils::create_device_enumerator();
+  auto com = utils::com_init();
+  if (!com.is_ok()) return res::Err("failed to initialize COM");
+  auto enumerator = com.create_device_enumerator();
   if (!enumerator.is_ok()) return res::Err("failed to create a device enumerator");
   return Devices{};
 }
