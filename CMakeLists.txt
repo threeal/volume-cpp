@@ -18,7 +18,7 @@ if(BUILD_TESTING)
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -fPIC -O0")
 
-  add_executable(volume_test test/example_test.cpp)
+  add_executable(volume_test test/example_test.cpp test/device_test.cpp)
   target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
   catch_discover_tests(volume_test)
 endif()
