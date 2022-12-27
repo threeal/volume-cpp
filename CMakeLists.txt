@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -Wnon-virtual-dto
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 
-add_library(volume src/example.cpp src/device.cpp)
+add_library(volume src/device.cpp)
 target_include_directories(volume PUBLIC include)
 
 if(BUILD_TESTING)
