@@ -6,7 +6,7 @@
 #include "device_enumerator.hpp"
 #include "status.hpp"
 
-namespace vol::utils {
+namespace vol::win {
 
 struct Com : public Status {
   ~Com() {
@@ -27,4 +27,4 @@ Com com_init() {
   return res;
 }
 
-}  // namespace vol::utils
+}  // namespace vol::win

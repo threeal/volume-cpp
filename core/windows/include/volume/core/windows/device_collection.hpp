@@ -5,7 +5,7 @@
 #include "device.hpp"
 #include "status.hpp"
 
-namespace vol::utils {
+namespace vol::win {
 
 struct DeviceCollection : public Status {
   IMMDeviceCollection* p;
@@ -27,4 +27,4 @@ struct DeviceCollection : public Status {
   }
 };
 
-}  // namespace vol::utils
+}  // namespace vol::win

@@ -26,8 +26,8 @@ target_include_directories(volume PUBLIC include)
 target_link_libraries(volume PUBLIC result)
 
 if(WIN32)
-  add_subdirectory(utils/windows)
-  target_link_libraries(volume PUBLIC volume_utils_windows)
+  add_subdirectory(core/windows)
+  target_link_libraries(volume PUBLIC volume_core_windows)
 endif()
 
 if(BUILD_TESTING)

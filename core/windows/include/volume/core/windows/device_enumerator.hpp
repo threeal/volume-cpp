@@ -5,7 +5,7 @@
 #include "device_collection.hpp"
 #include "status.hpp"
 
-namespace vol::utils {
+namespace vol::win {
 
 struct DeviceEnumerator : public Status {
   IMMDeviceEnumerator* p;
@@ -27,4 +27,4 @@ struct DeviceEnumerator : public Status {
   }
 };
 
-}  // namespace vol::utils
+}  // namespace vol::win

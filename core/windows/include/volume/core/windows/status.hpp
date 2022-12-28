@@ -2,7 +2,7 @@
 
 #include <mmdeviceapi.h>
 
-namespace vol::utils {
+namespace vol::win {
 
 struct Status {
   HRESULT hr;
@@ -14,4 +14,4 @@ struct StatusOf : public Status {
   T val;
 };
 
-}  // namespace vol::utils
+}  // namespace vol::win

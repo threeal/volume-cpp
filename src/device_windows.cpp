@@ -1,12 +1,12 @@
+#include <volume/core/windows/com.hpp>
+#include <volume/core/windows/device_collection.hpp>
 #include <volume/device.hpp>
-#include <volume/utils/com.hpp>
-#include <volume/utils/device_collection.hpp>
 
 namespace vol {
 
 namespace {
 
-res::ResultOr<Devices> to_devices(utils::DeviceCollection& device_collection) {
+res::ResultOr<Devices> to_devices(win::DeviceCollection& device_collection) {
   auto count = device_collection.count();
   if (!count.is_ok()) {
     return res::Err("failed to count devices");
@@ -23,7 +23,7 @@ res::ResultOr<Devices> to_devices(utils::DeviceCollection& device_collection) {
 }  // namespace
 
 res::ResultOr<Devices> list_input_devices() {
-  auto com = utils::com_init();
+  auto com = win::com_init();
   if (!com.is_ok()) {
     return res::Err("failed to initialize COM");
   }
@@ -39,7 +39,7 @@ res::ResultOr<Devices> list_input_devices() {
 }
 
 res::ResultOr<Devices> list_output_devices() {
-  auto com = utils::com_init();
+  auto com = win::com_init();
   if (!com.is_ok()) {
     return res::Err("failed to initialize COM");
   }
