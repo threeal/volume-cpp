@@ -1,0 +1,2 @@
+add_library(volume_core_windows INTERFACE)
+target_include_directories(volume_core_windows INTERFACE include)
