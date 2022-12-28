@@ -6,12 +6,18 @@ namespace vol {
 
 namespace {
 
-res::ResultOr<Devices> to_devices(utils::DeviceCollection& devices) {
-  auto count = devices.count();
+res::ResultOr<Devices> to_devices(utils::DeviceCollection& device_collection) {
+  auto count = device_collection.count();
   if (!count.is_ok()) {
     return res::Err("failed to count devices");
   }
-  return Devices(count.val);
+  Devices devices;
+  for (UINT i = 0; i < count.val; ++i) {
+    auto device = device_collection.get(i);
+    if (!device.is_ok()) continue;
+    devices.push_back(Device());
+  }
+  return devices;
 }
 
 }  // namespace

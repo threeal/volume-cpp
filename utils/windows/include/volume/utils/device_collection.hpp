@@ -2,6 +2,7 @@
 
 #include <mmdeviceapi.h>
 
+#include "device.hpp"
 #include "status.hpp"
 
 namespace vol::utils {
@@ -16,6 +17,12 @@ struct DeviceCollection : public Status {
   StatusOf<UINT> count() {
     StatusOf<UINT> res;
     res.hr = p->GetCount(&res.val);
+    return res;
+  }
+
+  Device get(UINT id) {
+    Device res;
+    res.hr = p->Item(id, &res.p);
     return res;
   }
 };
