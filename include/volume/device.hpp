@@ -10,6 +10,7 @@ struct Device {};
 
 using Devices = std::vector<Device>;
 
-res::ResultOr<Devices> list_devices();
+res::ResultOr<Devices> list_input_devices();
+res::ResultOr<Devices> list_output_devices();
 
 }  // namespace vol
