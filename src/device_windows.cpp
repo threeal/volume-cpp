@@ -9,6 +9,9 @@ res::ResultOr<Devices> list_input_devices() {
   auto enumerator = com.create_device_enumerator();
   if (!enumerator.is_ok())
     return res::Err("failed to create a device enumerator");
+  auto devices = enumerator.enumerate_input_devices();
+  if (!devices.is_ok())
+    return res::Err("failed to enumerate input devices");
   return Devices{};
 }
 
@@ -18,6 +21,9 @@ res::ResultOr<Devices> list_output_devices() {
   auto enumerator = com.create_device_enumerator();
   if (!enumerator.is_ok())
     return res::Err("failed to create a device enumerator");
+  auto devices = enumerator.enumerate_output_devices();
+  if (!devices.is_ok())
+    return res::Err("failed to enumerate output devices");
   return Devices{};
 }
 
