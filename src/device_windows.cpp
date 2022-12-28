@@ -6,15 +6,15 @@ namespace vol {
 
 namespace {
 
-res::ResultOr<Devices> to_devices(win::DeviceCollection& device_collection) {
-  auto count = device_collection.count();
+res::ResultOr<Devices> to_devices(win::DeviceCollection& win_devices) {
+  auto count = win_devices.count();
   if (!count.is_ok()) {
     return res::Err("failed to count devices");
   }
   Devices devices;
   for (UINT i = 0; i < count.val; ++i) {
-    auto device = device_collection.get(i);
-    if (!device.is_ok()) continue;
+    auto win_device = win_devices.get(i);
+    if (!win_device.is_ok()) continue;
     devices.push_back(Device());
   }
   return devices;
@@ -23,35 +23,35 @@ res::ResultOr<Devices> to_devices(win::DeviceCollection& device_collection) {
 }  // namespace
 
 res::ResultOr<Devices> list_input_devices() {
-  auto com = win::com_init();
-  if (!com.is_ok()) {
+  auto win_com = win::com_init();
+  if (!win_com.is_ok()) {
     return res::Err("failed to initialize COM");
   }
-  auto enumerator = com.create_device_enumerator();
-  if (!enumerator.is_ok()) {
+  auto win_enumerator = win_com.create_device_enumerator();
+  if (!win_enumerator.is_ok()) {
     return res::Err("failed to create a device enumerator");
   }
-  auto devices = enumerator.enumerate_input_devices();
-  if (!devices.is_ok()) {
+  auto win_devices = win_enumerator.enumerate_input_devices();
+  if (!win_devices.is_ok()) {
     return res::Err("failed to enumerate input devices");
   }
-  return to_devices(devices);
+  return to_devices(win_devices);
 }
 
 res::ResultOr<Devices> list_output_devices() {
-  auto com = win::com_init();
-  if (!com.is_ok()) {
+  auto win_com = win::com_init();
+  if (!win_com.is_ok()) {
     return res::Err("failed to initialize COM");
   }
-  auto enumerator = com.create_device_enumerator();
-  if (!enumerator.is_ok()) {
+  auto win_enumerator = win_com.create_device_enumerator();
+  if (!win_enumerator.is_ok()) {
     return res::Err("failed to create a device enumerator");
   }
-  auto devices = enumerator.enumerate_output_devices();
-  if (!devices.is_ok()) {
+  auto win_devices = win_enumerator.enumerate_output_devices();
+  if (!win_devices.is_ok()) {
     return res::Err("failed to enumerate output devices");
   }
-  return to_devices(devices);
+  return to_devices(win_devices);
 }
 
 }  // namespace vol
