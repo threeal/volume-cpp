@@ -9,4 +9,9 @@ struct Status {
   bool is_ok() const { return SUCCEEDED(hr); }
 };
 
+template <typename T>
+struct StatusOf : public Status {
+  T val;
+};
+
 }  // namespace vol::utils

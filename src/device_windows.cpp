@@ -16,6 +16,10 @@ res::ResultOr<Devices> list_input_devices() {
   if (!devices.is_ok()) {
     return res::Err("failed to enumerate input devices");
   }
+  auto count = devices.count();
+  if (!count.is_ok()) {
+    return res::Err("failed to count devices");
+  }
   return Devices{};
 }
 
@@ -31,6 +35,10 @@ res::ResultOr<Devices> list_output_devices() {
   auto devices = enumerator.enumerate_output_devices();
   if (!devices.is_ok()) {
     return res::Err("failed to enumerate output devices");
+  }
+  auto count = devices.count();
+  if (!count.is_ok()) {
+    return res::Err("failed to count devices");
   }
   return Devices{};
 }
