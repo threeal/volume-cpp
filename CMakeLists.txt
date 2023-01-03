@@ -9,6 +9,8 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wpedantic")
 endif()
 
+option(BUILD_EXAMPLE "build the examples" OFF)
+
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 cpmaddpackage(
