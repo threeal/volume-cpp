@@ -9,6 +9,8 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wpedantic")
 endif()
 
+option(BUILD_EXAMPLE "build the examples" OFF)
+
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 cpmaddpackage(
@@ -39,4 +41,8 @@ if(BUILD_TESTING)
   add_executable(volume_test test/device_test.cpp)
   target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
   catch_discover_tests(volume_test)
+endif()
+
+if(BUILD_EXAMPLE)
+  add_subdirectory(examples)
 endif()

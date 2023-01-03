@@ -1,0 +1,2 @@
+add_executable(volume_count_devices count_devices.cpp)
+target_link_libraries(volume_count_devices PRIVATE volume)
