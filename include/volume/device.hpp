@@ -1,6 +1,6 @@
 #pragma once
 
-#include <result/result_or.hpp>
+#include <result/result_of.hpp>
 #include <string>
 #include <vector>
 
@@ -10,7 +10,7 @@ struct Device {};
 
 using Devices = std::vector<Device>;
 
-res::ResultOr<Devices> list_input_devices();
-res::ResultOr<Devices> list_output_devices();
+res::ResultOf<Devices> list_input_devices();
+res::ResultOf<Devices> list_output_devices();
 
 }  // namespace vol
