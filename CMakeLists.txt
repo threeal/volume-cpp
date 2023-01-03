@@ -16,7 +16,7 @@ cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 cpmaddpackage(
   NAME result
   GITHUB_REPOSITORY threeal/result
-  GIT_TAG 7acc062
+  GIT_TAG ab4b3c1
   OPTIONS "BUILD_TESTING OFF")
 
 if(WIN32)

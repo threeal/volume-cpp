@@ -6,7 +6,7 @@ namespace vol {
 
 namespace {
 
-res::ResultOr<Devices> to_devices(win::DeviceCollection& win_devices) {
+res::ResultOf<Devices> to_devices(win::DeviceCollection& win_devices) {
   auto count = win_devices.count();
   if (!count.is_ok()) {
     return res::Err("failed to count devices");
@@ -22,7 +22,7 @@ res::ResultOr<Devices> to_devices(win::DeviceCollection& win_devices) {
 
 }  // namespace
 
-res::ResultOr<Devices> list_input_devices() {
+res::ResultOf<Devices> list_input_devices() {
   auto win_com = win::com_init();
   if (!win_com.is_ok()) {
     return res::Err("failed to initialize COM");
@@ -38,7 +38,7 @@ res::ResultOr<Devices> list_input_devices() {
   return to_devices(win_devices);
 }
 
-res::ResultOr<Devices> list_output_devices() {
+res::ResultOf<Devices> list_output_devices() {
   auto win_com = win::com_init();
   if (!win_com.is_ok()) {
     return res::Err("failed to initialize COM");
