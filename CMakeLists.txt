@@ -40,3 +40,7 @@ if(BUILD_TESTING)
   target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
   catch_discover_tests(volume_test)
 endif()
+
+if(BUILD_EXAMPLE)
+  add_subdirectory(examples)
+endif()
