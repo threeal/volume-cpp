@@ -1,9 +1,9 @@
-name: build
+name: test
 on:
   workflow_dispatch:
   push:
 jobs:
-  release:
+  unit-tests:
     runs-on: windows-latest
     steps:
       - name: Checkout this repository
@@ -12,13 +12,10 @@ jobs:
           fetch-depth: 0
 
       - name: Configure CMake
-        run: cmake . -B build
+        run: cmake . -B build -DBUILD_TESTING=ON -DCMAKE_CXX_FLAGS='/WX'
 
       - name: Build targets
         run: cmake --build build
 
-      - name: Reconfigure CMake to build the examples
-        run: cmake . -B build -DBUILD_EXAMPLE=ON
-
-      - name: Rebuild targets
-        run: cmake --build build
+      - name: Run tests
+        run: ctest --test-dir build --verbose
