@@ -6,10 +6,8 @@ jobs:
   unit-tests:
     runs-on: windows-latest
     steps:
-      - name: Checkout this repository
-        uses: actions/checkout@v2.5.0
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v3.2.0
 
       - name: Configure CMake
         run: cmake . -B build -DBUILD_TESTING=ON -DCMAKE_CXX_FLAGS='/WX'
