@@ -1,5 +1,5 @@
-#include <volume/device.hpp>
 #include <iostream>
+#include <volume/device.hpp>
 
 int main() {
   const auto inputs = vol::list_input_devices();
