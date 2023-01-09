@@ -10,21 +10,10 @@ namespace vol::win {
 struct DeviceEnumerator : public Status {
   IMMDeviceEnumerator* p;
 
-  ~DeviceEnumerator() {
-    if (is_ok()) p->Release();
-  }
+  ~DeviceEnumerator();
 
-  DeviceCollection enumerate_input_devices() {
-    DeviceCollection res;
-    res.hr = p->EnumAudioEndpoints(eCapture, DEVICE_STATE_ACTIVE, &res.p);
-    return res;
-  }
-
-  DeviceCollection enumerate_output_devices() {
-    DeviceCollection res;
-    res.hr = p->EnumAudioEndpoints(eRender, DEVICE_STATE_ACTIVE, &res.p);
-    return res;
-  }
+  DeviceCollection enumerate_input_devices();
+  DeviceCollection enumerate_output_devices();
 };
 
 }  // namespace vol::win
