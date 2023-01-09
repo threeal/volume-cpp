@@ -1,12 +1,12 @@
 #pragma once
 
-#include <mmdeviceapi.h>
+#include <Winerror.h>
 
 namespace vol::win {
 
 struct Status {
   HRESULT hr;
-  bool is_ok() const { return SUCCEEDED(hr); }
+  inline bool is_ok() const { return hr == S_OK; }
 };
 
 template <typename T>
