@@ -6,7 +6,7 @@ namespace vol::win {
 
 struct Status {
   HRESULT hr;
-  inline bool is_ok() const { return SUCCEED(hr); }
+  inline bool is_ok() const { return hr == S_OK; }
 };
 
 template <typename T>
