@@ -1,6 +1,6 @@
 #pragma once
 
-#include <mmdeviceapi.h>
+#include <Winerror.h>
 
 namespace vol::win {
 
