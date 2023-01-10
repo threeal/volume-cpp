@@ -45,7 +45,7 @@ jobs:
         uses: actions/checkout@v3.3.0
 
       - name: Configure CMake
-        run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON
+        run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
 
       - name: Build targets
         run: cmake --build build
