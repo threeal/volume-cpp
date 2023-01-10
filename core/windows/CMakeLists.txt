@@ -4,7 +4,8 @@ add_library(
   src/device_collection.cpp
   src/device_enumerator.cpp
   src/device.cpp
-  src/status.cpp)
+  src/status.cpp
+)
 target_include_directories(volume_core_windows PUBLIC include)
 
 if(BUILD_TESTING)

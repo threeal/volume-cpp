@@ -17,7 +17,8 @@ cpmaddpackage(
   NAME result
   GITHUB_REPOSITORY threeal/result
   GIT_TAG ab4b3c1
-  OPTIONS "BUILD_TESTING OFF")
+  OPTIONS "BUILD_TESTING OFF"
+)
 
 if(BUILD_TESTING)
   enable_testing()
