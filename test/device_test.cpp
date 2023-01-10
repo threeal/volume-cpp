@@ -4,9 +4,11 @@
 TEST_CASE("list input devices") {
   const auto res = vol::list_input_devices();
   if (res.is_err()) FAIL(res.unwrap_err());
+  REQUIRE(res.unwrap().size() > 0);
 }
 
 TEST_CASE("list output devices") {
   const auto res = vol::list_output_devices();
   if (res.is_err()) FAIL(res.unwrap_err());
+  REQUIRE(res.unwrap().size() > 0);
 }
