@@ -10,6 +10,8 @@ else()
 endif()
 
 option(BUILD_EXAMPLE "build the examples" OFF)
+set(TESTING_INPUTS_COUNT 0 CACHE STRING "count of input devices that is available for testing")
+set(TESTING_OUTPUTS_COUNT 0 CACHE STRING "count of output devices that is available for testing")
 
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
@@ -42,6 +44,9 @@ endif()
 if(BUILD_TESTING)
   add_executable(volume_test test/device_test.cpp)
   target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
+  target_compile_definitions(
+    volume_test PRIVATE TESTING_INPUTS_COUNT=${TESTING_INPUTS_COUNT} TESTING_OUTPUTS_COUNT=${TESTING_OUTPUTS_COUNT}
+  )
   catch_discover_tests(volume_test)
 endif()
 
