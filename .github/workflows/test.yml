@@ -9,6 +9,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.3.0
 
+      - name: Checkout CI sound helpers repository
+        uses: actions/checkout@v3.3.0
+        with:
+          repository: LABSN/sound-ci-helpers
+          path: sound
+
+      - name: Setup sound device
+        run: sound/auto.sh
+
       - name: Configure CMake
         run: cmake . -B build -DBUILD_TESTING=ON
 
