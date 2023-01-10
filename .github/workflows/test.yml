@@ -15,8 +15,8 @@ jobs:
           repository: LABSN/sound-ci-helpers
           path: sound
 
-      - name: Setup sound device
-        run: sound/auto.sh
+      - name: Setup sound devices
+        run: powershell sound/windows/setup_sound.ps1
 
       - name: Configure CMake
         run: cmake . -B build -DBUILD_TESTING=ON
