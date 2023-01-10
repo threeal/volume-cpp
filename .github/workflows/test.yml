@@ -16,7 +16,27 @@ jobs:
         run: cmake --build build
 
       - name: Run tests
-        run: ctest --test-dir build --verbose
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Checkout CI sound helpers repository
+        uses: actions/checkout@v3.3.0
+        with:
+          repository: LABSN/sound-ci-helpers
+          path: sound
+
+      - name: Setup sound devices
+        run: |
+          net start audiosrv
+          powershell sound/windows/setup_sound.ps1
+
+      - name: Reconfigure CMake
+        run: cmake build -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
+
+      - name: Rebuild targets
+        run: cmake --build build
+
+      - name: Rerun tests
+        run: ctest --test-dir build --output-on-failure
 
   check-warning:
     runs-on: windows-latest
@@ -25,7 +45,7 @@ jobs:
         uses: actions/checkout@v3.3.0
 
       - name: Configure CMake
-        run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON
+        run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
 
       - name: Build targets
         run: cmake --build build

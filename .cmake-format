@@ -10,6 +10,11 @@
         "GIT_TAG": "*",
         "OPTIONS": "*"
       }
+    },
+    "set": {
+      "kwargs": {
+        "CACHE": "1+"
+      }
     }
   }
 }
