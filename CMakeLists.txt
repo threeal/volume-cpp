@@ -19,6 +19,12 @@ cpmaddpackage(
   GIT_TAG ab4b3c1
   OPTIONS "BUILD_TESTING OFF")
 
+if(BUILD_TESTING)
+  enable_testing()
+  cpmaddpackage("gh:catchorg/Catch2@3.2.0")
+  include("${Catch2_SOURCE_DIR}/extras/Catch.cmake")
+endif()
+
 if(WIN32)
   set(WINDOWS_SRCS src/device_windows.cpp)
 endif()
@@ -33,11 +39,6 @@ if(WIN32)
 endif()
 
 if(BUILD_TESTING)
-  enable_testing()
-
-  cpmaddpackage("gh:catchorg/Catch2@3.2.0")
-  include("${Catch2_SOURCE_DIR}/extras/Catch.cmake")
-
   add_executable(volume_test test/device_test.cpp)
   target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
   catch_discover_tests(volume_test)
