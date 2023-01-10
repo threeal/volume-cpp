@@ -9,6 +9,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.3.0
 
+      - name: Configure CMake
+        run: cmake . -B build -DBUILD_TESTING=ON
+
+      - name: Build targets
+        run: cmake --build build
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
+
       - name: Checkout CI sound helpers repository
         uses: actions/checkout@v3.3.0
         with:
@@ -20,13 +29,13 @@ jobs:
           net start audiosrv
           powershell sound/windows/setup_sound.ps1
 
-      - name: Configure CMake
-        run: cmake . -B build -DBUILD_TESTING=ON
+      - name: Reconfigure CMake
+        run: cmake build -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
 
-      - name: Build targets
+      - name: Rebuild targets
         run: cmake --build build
 
-      - name: Run tests
+      - name: Rerun tests
         run: ctest --test-dir build --output-on-failure
 
   check-warning:
