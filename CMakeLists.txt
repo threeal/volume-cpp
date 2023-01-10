@@ -10,8 +10,8 @@ else()
 endif()
 
 option(BUILD_EXAMPLE "build the examples" OFF)
-set(TESTING_INPUTS_COUNT 0 CACHE STRING "count of input devices that is available for testing")
-set(TESTING_OUTPUTS_COUNT 0 CACHE STRING "count of output devices that is available for testing")
+set(TESTING_INPUTS_COUNT -1 CACHE STRING "count of input devices that is available for testing")
+set(TESTING_OUTPUTS_COUNT -1 CACHE STRING "count of output devices that is available for testing")
 
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
