@@ -15,12 +15,7 @@ set(TESTING_OUTPUTS_COUNT -1 CACHE STRING "count of output devices that is avail
 
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
-cpmaddpackage(
-  NAME result
-  GITHUB_REPOSITORY threeal/result
-  GIT_TAG ab4b3c1
-  OPTIONS "BUILD_TESTING OFF"
-)
+cpmaddpackage("gh:threeal/result#973ccb5")
 
 if(BUILD_TESTING)
   enable_testing()
