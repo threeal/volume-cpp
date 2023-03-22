@@ -27,10 +27,10 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 
 if(WIN32)
-  set(WINDOWS_SRCS src/device_windows.cpp)
+  set(EXTRA_SRCS src/device_windows.cpp)
 endif()
 
-add_library(volume src/device.cpp ${WINDOWS_SRCS})
+add_library(volume src/device.cpp ${EXTRA_SRCS})
 target_include_directories(volume PUBLIC include)
 target_link_libraries(volume PUBLIC result)
 
