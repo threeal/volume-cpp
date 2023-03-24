@@ -14,7 +14,7 @@ set(TESTING_INPUTS_COUNT -1 CACHE STRING "count of input devices that is availab
 set(TESTING_OUTPUTS_COUNT -1 CACHE STRING "count of output devices that is available for testing")
 
 include(cmake/CPM.cmake)
-cpmaddpackage("gh:threeal/result#973ccb5")
+cpmaddpackage("gh:threeal/result@0.1.0")
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
   cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
