@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.5.1
+        uses: actions/checkout@v3.5.2
 
       - name: Configure CMake
         run: cmake . -B build -DBUILD_TESTING=ON
@@ -19,7 +19,7 @@ jobs:
         run: ctest --test-dir build --output-on-failure
 
       - name: Checkout CI sound helpers repository
-        uses: actions/checkout@v3.5.1
+        uses: actions/checkout@v3.5.2
         with:
           repository: LABSN/sound-ci-helpers
           path: sound
@@ -42,7 +42,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.5.1
+        uses: actions/checkout@v3.5.2
 
       - name: Configure CMake
         run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.5.1
+        uses: actions/checkout@v3.5.2
 
       - name: Install cmake-format
         run: pip3 install cmake-format
