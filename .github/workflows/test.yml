@@ -9,19 +9,16 @@ jobs:
   unit-tests:
     runs-on: windows-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v3.5.3
 
-      - name: Configure CMake
-        run: cmake . -B build -DBUILD_TESTING=ON
+      - name: Configure, build, and test the project
+        uses: threeal/cmake-action@v1.2.0
+        with:
+          options: BUILD_TESTING=ON
+          run-test: true
 
-      - name: Build targets
-        run: cmake --build build
-
-      - name: Run tests
-        run: ctest --test-dir build --output-on-failure
-
-      - name: Checkout CI sound helpers repository
+      - name: Checkout the CI sound helpers repository
         uses: actions/checkout@v3.5.3
         with:
           repository: LABSN/sound-ci-helpers
@@ -32,26 +29,24 @@ jobs:
           net start audiosrv
           powershell sound/windows/setup_sound.ps1
 
-      - name: Reconfigure CMake
-        run: cmake build -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
-
-      - name: Rebuild targets
-        run: cmake --build build
-
-      - name: Rerun tests
-        run: ctest --test-dir build --output-on-failure
+      - name: Configure, build, and test the project with sound devices support
+        uses: threeal/cmake-action@v1.2.0
+        with:
+          options: TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
+          run-test: true
 
   check-warning:
     runs-on: windows-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v3.5.3
 
-      - name: Configure CMake
-        run: cmake . -B build -DCMAKE_CXX_FLAGS='/WX' -DBUILD_TESTING=ON -DTESTING_INPUTS_COUNT=1 -DTESTING_OUTPUTS_COUNT=1
-
-      - name: Build targets
-        run: cmake --build build
+      - name: Configure and build the project
+        uses: threeal/cmake-action@v1.2.0
+        with:
+          cxx-flags: /WX
+          options: BUILD_TESTING=ON TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
+          run-build: true
 
   check-formatting:
     runs-on: ubuntu-latest
@@ -59,10 +54,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.5.3
 
-      - name: Configure CMake
-        run: cmake . -B build
+      - name: Configure and build the project
+        uses: threeal/cmake-action@v1.2.0
+        with:
+          run-build: true
+          build-args: --target fix-format
 
-      - name: Check code formatting
-        run: |
-          cmake --build build --target format
-          cmake --build build --target check-format
+      - name: Check diff
+        run: git diff --exit-code HEAD
