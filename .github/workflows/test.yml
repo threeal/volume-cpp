@@ -61,4 +61,7 @@ jobs:
         uses: threeal/cmake-action@v1.2.0
         with:
           run-build: true
-          build-args: --target format --target check-format
+          build-args: --target fix-format
+
+      - name: Check diff
+        run: git diff --exit-code HEAD
