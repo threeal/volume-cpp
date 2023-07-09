@@ -17,7 +17,7 @@ include(cmake/CPM.cmake)
 cpmaddpackage("gh:threeal/result@0.1.0")
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
+  cpmaddpackage("gh:threeal/Format.cmake#auto-install-cmake-format")
 
   if(BUILD_TESTING)
     enable_testing()
