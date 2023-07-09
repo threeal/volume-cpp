@@ -54,9 +54,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.5.3
 
-      - name: Install cmake-format
-        run: pip3 install cmake-format
-
       - name: Configure and build the project
         uses: threeal/cmake-action@v1.2.0
         with:
