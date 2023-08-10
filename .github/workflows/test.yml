@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3.5.3
 
       - name: Configure, build, and test the project
-        uses: threeal/cmake-action@v1.2.0
+        uses: threeal/cmake-action@v1.3.0
         with:
           options: BUILD_TESTING=ON
           run-test: true
@@ -30,7 +30,7 @@ jobs:
           powershell sound/windows/setup_sound.ps1
 
       - name: Configure, build, and test the project with sound devices support
-        uses: threeal/cmake-action@v1.2.0
+        uses: threeal/cmake-action@v1.3.0
         with:
           options: TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
           run-test: true
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v3.5.3
 
       - name: Configure and build the project
-        uses: threeal/cmake-action@v1.2.0
+        uses: threeal/cmake-action@v1.3.0
         with:
           cxx-flags: /WX
           options: BUILD_TESTING=ON TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@v3.5.3
 
       - name: Configure and build the project
-        uses: threeal/cmake-action@v1.2.0
+        uses: threeal/cmake-action@v1.3.0
         with:
           run-build: true
           build-args: --target fix-format
