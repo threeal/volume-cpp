@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4.1.0
 
       - name: Configure, build, and test the project
         uses: threeal/cmake-action@v1.3.0
@@ -19,7 +19,7 @@ jobs:
           run-test: true
 
       - name: Checkout the CI sound helpers repository
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4.1.0
         with:
           repository: LABSN/sound-ci-helpers
           path: sound
@@ -39,7 +39,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4.1.0
 
       - name: Configure and build the project
         uses: threeal/cmake-action@v1.3.0
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.0.0
+        uses: actions/checkout@v4.1.0
 
       - name: Configure and build the project
         uses: threeal/cmake-action@v1.3.0
