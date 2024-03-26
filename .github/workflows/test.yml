@@ -54,6 +54,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
 
+      - name: Install cmakelang
+        uses: threeal/pipx-install-action@v1.0.0
+        with:
+          packages: cmakelang
+
       - name: Configure and build the project
         uses: threeal/cmake-action@v1.3.0
         with:
