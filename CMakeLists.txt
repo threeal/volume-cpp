@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.21)
 project(volume)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -16,7 +16,7 @@ set(TESTING_OUTPUTS_COUNT -1 CACHE STRING "count of output devices that is avail
 include(cmake/CPM.cmake)
 cpmaddpackage("gh:threeal/result@0.1.0")
 
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+if(PROJECT_IS_TOP_LEVEL)
   cpmaddpackage(gh:TheLartians/Format.cmake@1.8.1)
 
   if(BUILD_TESTING)
@@ -39,7 +39,7 @@ if(WIN32)
   target_link_libraries(volume PUBLIC volume_core_windows)
 endif()
 
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+if(PROJECT_IS_TOP_LEVEL)
   if(BUILD_TESTING)
     add_executable(volume_test test/device_test.cpp)
     target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
