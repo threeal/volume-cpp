@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 project(volume)
 
+option(VOLUME_ENABLE_TESTS "Enable test targets.")
+
 set(CMAKE_CXX_STANDARD 17)
 
 if(MSVC)
@@ -19,7 +21,7 @@ cpmaddpackage("gh:threeal/result@0.1.0")
 if(PROJECT_IS_TOP_LEVEL)
   cpmaddpackage(gh:TheLartians/Format.cmake@1.8.1)
 
-  if(BUILD_TESTING)
+  if(VOLUME_ENABLE_TESTS)
     enable_testing()
     cpmaddpackage(gh:catchorg/Catch2@3.6.0)
     include("${Catch2_SOURCE_DIR}/extras/Catch.cmake")
@@ -40,7 +42,7 @@ if(WIN32)
 endif()
 
 if(PROJECT_IS_TOP_LEVEL)
-  if(BUILD_TESTING)
+  if(VOLUME_ENABLE_TESTS)
     add_executable(volume_test test/device_test.cpp)
     target_link_libraries(volume_test PRIVATE volume Catch2::Catch2WithMain)
     target_compile_definitions(

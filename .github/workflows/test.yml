@@ -14,7 +14,7 @@ jobs:
       - name: Configure, build, and test the project
         uses: threeal/cmake-action@v1.3.0
         with:
-          options: BUILD_TESTING=ON
+          options: VOLUME_ENABLE_TESTS=ON
           run-test: true
 
       - name: Checkout the CI sound helpers repository
@@ -44,7 +44,7 @@ jobs:
         uses: threeal/cmake-action@v1.3.0
         with:
           cxx-flags: /WX
-          options: BUILD_TESTING=ON TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
+          options: VOLUME_ENABLE_TESTS=ON TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
           run-build: true
 
   check-formatting:
