@@ -11,11 +11,13 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4.1.7
 
-      - name: Configure, build, and test the project
-        uses: threeal/cmake-action@v1.3.0
+      - name: Configure and build the project
+        uses: threeal/cmake-action@v2.0.0
         with:
           options: VOLUME_ENABLE_TESTS=ON
-          run-test: true
+
+      - name: Test the project
+        uses: threeal/ctest-action@v1.1.0
 
       - name: Checkout the CI sound helpers repository
         uses: actions/checkout@v4.1.7
@@ -28,11 +30,15 @@ jobs:
           net start audiosrv
           powershell sound/windows/setup_sound.ps1
 
-      - name: Configure, build, and test the project with sound devices support
-        uses: threeal/cmake-action@v1.3.0
+      - name: Configure and build the project with sound devices support
+        uses: threeal/cmake-action@v2.0.0
         with:
-          options: TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
-          run-test: true
+          options:
+            TESTING_INPUTS_COUNT=1
+            TESTING_OUTPUTS_COUNT=1
+
+      - name: Test the project with sound devices support
+        uses: threeal/ctest-action@v1.1.0
 
   check-warning:
     runs-on: windows-latest
@@ -41,11 +47,13 @@ jobs:
         uses: actions/checkout@v4.1.7
 
       - name: Configure and build the project
-        uses: threeal/cmake-action@v1.3.0
+        uses: threeal/cmake-action@v2.0.0
         with:
           cxx-flags: /WX
-          options: VOLUME_ENABLE_TESTS=ON TESTING_INPUTS_COUNT=1 TESTING_OUTPUTS_COUNT=1
-          run-build: true
+          options:
+            VOLUME_ENABLE_TESTS=ON
+            TESTING_INPUTS_COUNT=1
+            TESTING_OUTPUTS_COUNT=1
 
   check-formatting:
     runs-on: ubuntu-latest
@@ -59,9 +67,8 @@ jobs:
           packages: cmakelang
 
       - name: Configure and build the project
-        uses: threeal/cmake-action@v1.3.0
+        uses: threeal/cmake-action@v2.0.0
         with:
-          run-build: true
           build-args: --target fix-format
 
       - name: Check diff
