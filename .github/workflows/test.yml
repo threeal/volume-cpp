@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
 
       - name: Configure and build the project
         uses: threeal/cmake-action@v2.0.0
@@ -20,7 +20,7 @@ jobs:
         uses: threeal/ctest-action@v1.1.0
 
       - name: Checkout the CI sound helpers repository
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
         with:
           repository: LABSN/sound-ci-helpers
           path: sound
@@ -44,7 +44,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
 
       - name: Configure and build the project
         uses: threeal/cmake-action@v2.0.0
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.1
 
       - name: Install cmakelang
         uses: threeal/pipx-install-action@v1.0.0
