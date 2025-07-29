@@ -23,7 +23,7 @@ if(PROJECT_IS_TOP_LEVEL)
 
   if(VOLUME_ENABLE_TESTS)
     enable_testing()
-    cpmaddpackage(gh:catchorg/Catch2@3.8.0)
+    cpmaddpackage(gh:catchorg/Catch2@3.9.0)
     include("${Catch2_SOURCE_DIR}/extras/Catch.cmake")
   endif()
 endif()
