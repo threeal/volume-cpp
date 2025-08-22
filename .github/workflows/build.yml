@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: Configure and build the project
         uses: threeal/cmake-action@v2.1.0
